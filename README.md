@@ -1,6 +1,6 @@
 # We Assert
 
-A very small package for use in internally verifying the flow and logic of scripts.
+A very small package for use in internally verifying statements inside scripts and functions---not just black-box checking of outputs.
 
 #Usage
 
