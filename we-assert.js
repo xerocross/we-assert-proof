@@ -18,55 +18,46 @@ var buildWeAssert = function() {
     }
   };
   var currentLevel = 2;
-  var setLevel = function(levelString) {
+  var setLevel = function (levelString) {
     var newLevel = levelStringToInt(levelString);
     if (newLevel == 0 || newLevel == 1 || newLevel == 2) {
       currentLevel = newLevel;
-    } else {
-      throw "unexpected level"
     }
   };
-
-  var getLevel = function() {
+  var getLevel = function () {
     return levels[currentLevel];
   };
-
-  var handler = function() {};
+  var handler = function () {};
   var setHandler = function(newHandler) {
     handler = newHandler;
   };
-
-  var that = function(statement, message) {
+  var that = function (statement, message) {
       if (!statement) {
         handler(statement, message);
       }
   };
-  var internalVerification = function(levelString, verificationFunction) {
+  var internalVerification = function (levelString, verificationFunction) {
     let level = levelStringToInt(levelString);
     if (level <= currentLevel) {
       verificationFunction();
     }
   };
-
   var atLevel = function(someLevelString) {
     var obj = {};
     obj.that = function(statement, message) {
       let level = levelStringToInt(someLevelString);
       if (level >= currentLevel) {
         that(statement, message);
-      } else {
-
       }
     }
     return obj;
   }
-
   return {
     setLevel : setLevel,
     that : that,
     atLevel: atLevel,
     setHandler : setHandler,
     getLevel: getLevel
-  }
+  };
 }
 module.exports.buildWeAssert = buildWeAssert;
