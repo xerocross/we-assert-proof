@@ -1,0 +1,14 @@
+{
+  "name": "we-assert",
+  "version": "0.1.0",
+  "description": "A very small package for use in internally verifying the flow and logic of scripts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "verification"
+  ],
+  "author": "Adam Cross",
+  "license": "MIT"
+}
