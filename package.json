@@ -1,14 +1,25 @@
 {
   "name": "we-assert",
-  "version": "0.2.0",
+  "version": "0.10.0",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "we-assert.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
-    "verification"
+    "verification",
+    "assert"
   ],
   "author": "Adam Cross",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xerocross/we-assert.git"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies" : {
+    "jest": "^23.4.2"
+  }
 }
