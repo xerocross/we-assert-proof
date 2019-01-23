@@ -1,0 +1,28 @@
+{
+    "parser" : "babel-eslint",
+    "plugins": ["jest"],
+    "env": {
+        "browser" : true,
+        "commonjs": true,
+        "node": true,
+        "jest/globals": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "rules": {
+        "no-console": "off",
+        "indent": ["error", 4],
+        "key-spacing": ["error", {
+            "beforeColon": true,
+            "afterColon": true,
+            "mode": "strict"
+        }]
+    },
+    "globals" : {
+        "NODE_ENV" : false,
+        "expect" : false,
+        "test" : false,
+        "console" : "false"
+    }
+}
