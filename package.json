@@ -1,6 +1,6 @@
 {
   "name": "we-assert",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "we-assert.js",
   "scripts": {
