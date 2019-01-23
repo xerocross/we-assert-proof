@@ -64,15 +64,17 @@ export default {
                 }
                 return ((statement) == true);
             },
-            proposition : function (symbol, message) {
-                let propFunction = propositions[symbol][0];
-                let propArgs = propositions[symbol][1]
+            proposition : function (symbol, prop) {
+                we.defineProposition(symbol, prop)
+                let propFunction = prop[0];
+                let propArgs = prop[1];
+                let propMessage = prop[2];
                 let val = propFunction(...propArgs);
 
                 if (val) {
                     factBase.push(symbol);
                 }
-                return this.that(val, message);
+                return this.that(val, propMessage);
             },
             thatIsProved : function(symbol, message) {
                 let res = we.checkIsProved(symbol);

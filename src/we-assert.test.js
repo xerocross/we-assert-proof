@@ -2,13 +2,15 @@
 import WeAssertPackage from "./we-assert.js";
 let resultVal;
 let we;
+let messages;
 
 
 beforeEach(() => {
     we = WeAssertPackage.build();
-
+    messages = [];
     we.setHandler(function(statement, message) {
         resultVal = false;
+        messages.push(message);
     });
     resultVal = undefined;
 });
@@ -83,33 +85,36 @@ test("forXBetween works on simple false statement", function() {
 
 test("test vulcan module simple positive", function() {
     let x = 8;
-    we.defineProposition("A", [x=> x % 4 == 0, [x] ]);
-    we.assert.proposition("A");
+    we.assert.proposition("A", [x=> x % 4 == 0, [x] ]);
     expect(resultVal).toBe(undefined);
 })
 
 test("test vulcan module simple negative", function() {
     let x = 9;
-    we.defineProposition("A", [x=> x % 4 == 0, [x] ]);
-    we.assert.proposition("A");
+    we.assert.proposition("A", [x=> x % 4 == 0, [x] ]);
     expect(resultVal).toBe(false);
 })
 
 test("test vulcan proof positive", function() {
     let x = 8;
-    we.defineProposition("A", [x=> x % 4 == 0, [x] ]);
-    we.assert.proposition("A");
-    we.defineProposition("B", [x=> x % 2 == 0, [x] ]);
+    we.assert.proposition("A", [x=> x % 4 == 0, [x] ]);
     we.assume("A -> B");
     we.assert.thatIsProved("B");
     expect(resultVal).toBe(undefined);
 })
 
-test("test vulcan proof negative", function() {
+test("test vulcan combination of statements positive", function() {
     let x = 8;
-    we.defineProposition("A", [x=> x % 4 == 0, [x] ]);
-    we.assert.proposition("A", "x is divisible by ");
-    we.defineProposition("B", [x=> x % 2 == 0, [x] ]);
-    we.assert.thatIsProved("B");
-    expect(resultVal).toBe(false);
+    we.assert.proposition("A", [x=> x % 4 == 0, [x], "x % 4 == 0"]);
+    we.assert.proposition("B", [x=> x % 2 == 0, [x] ], "x % 2 == 0");
+    we.assert.thatIsProved("A & B");
+    expect(resultVal).toBe(undefined);
+})
+
+test("test vulcan combination of statements negative", function() {
+    let x = 18;
+    we.assert.proposition("A", [x=> x % 4 == 0, [x], "x % 4 == 0"]);
+    we.assert.proposition("B", [x=> x % 2 == 0, [x] ], "x % 2 == 0");
+    we.assert.thatIsProved("A & B", "A & B");
+    expect(messages[0]).toBe("x % 4 == 0");
 })
