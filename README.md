@@ -13,8 +13,8 @@ A very small package for use in internally verifying the flow and logic of scrip
 The only export from this package is a function called `buildWeAssert` which takes no arguments.  So, for example, to get started you might do something like
 
 ```
-const buildWeAssert = require('we-assert');
-var weAssert = buildWeAssert();
+import WeAssert from "we-assert";
+var weAssert = WeAssert.build();
 ```
 
 The most basic usage is the `that(statement, message)` function.  For example
