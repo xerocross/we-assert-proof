@@ -23,6 +23,6 @@
         "NODE_ENV" : false,
         "expect" : false,
         "test" : false,
-        "console" : "false"
+        "console" : false
     }
 }
