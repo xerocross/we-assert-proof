@@ -1,6 +1,6 @@
 {
   "name": "we-assert",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "we-assert.js",
   "scripts": {
@@ -18,7 +18,6 @@
     "url": "https://github.com/xerocross/we-assert.git"
   },
   "dependencies": {
-    "@babel/preset-es2015": "^7.0.0-beta.53",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
