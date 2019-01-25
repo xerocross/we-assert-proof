@@ -60,7 +60,7 @@ export default {
         we.assert = {
             that : function (statement, message) {
                 if (!statement) {
-                    handler(statement, message);
+                    handler(message);
                 }
                 return ((statement) == true);
             },
@@ -79,7 +79,7 @@ export default {
             thatIsProved : function(symbol, message) {
                 let res = we.checkIsProved(symbol);
                 if (!res) {
-                    handler(propositions[symbol], message);
+                    handler(message);
                 } 
                 return res;
             },
