@@ -1,5 +1,6 @@
 
 import WeAssertPackage from "./we-assert.js";
+import vulcan from "xerocross.vulcan";
 let resultVal;
 let we;
 let messages;
@@ -118,3 +119,17 @@ test("test vulcan combination of statements negative", function() {
     we.assert.thatIsProved("A & B", "A & B");
     expect(messages[0]).toBe("x % 4 == 0");
 })
+
+
+// test("test other symbols", function() {
+//     we.assume("aa");
+//     we.assume("aa -> bb");
+//     we.assert.thatIsProved("bb", "bb is proved");
+//     expect(resultVal).toBe(undefined);
+// })
+
+test("test other symbols", function() {
+    var proof = vulcan.prove(["a", "a -> b"], "b");
+    expect(vulcan.isProofComplete(proof)).toBe(true);
+})
+

@@ -6,6 +6,7 @@ module.exports = [{
         'we-assert' : './src/we-assert.js'
     },
     output : {
+        globalObject : "this",
         path : path.resolve(__dirname, './'),
         publicPath : '/',
         filename : '[name].js',
