@@ -97,3 +97,5 @@ expect(we.check.typeOf([2, 4, 7.5, 10]).is("natural[]")).toBe(false);
 ## to do
 
 We should probably have different, independent handlers for the different error levels, for DEBUG, WARN, AND ERROR.  I might do that later.
+
+I'm playing with some ideas related to logical proof.  I would really like to wire automated proofs into this thing, but I have not cracked it yet.  
