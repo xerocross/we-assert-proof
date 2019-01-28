@@ -32,7 +32,7 @@ we.setHandler(function(message){
     throw new Error(`The following assertion failed: ${message}`);
 });
 ```
-Note how in the handler we have translated the positive assertion into an error message about exactly which assertion failed.
+Note how in the handler we have translated the positive assertion into an error message about exactly which assertion failed.  Of course instead of throwing an error you could just swallow it, or log it, or throw the error and log it.  You get the idea.  We-Assert is agnostic to handling the failure of assertions.  Handle it however you want.   
 
 We can set the level using any of the following:
 `we.setLevel("DEBUG")`, `we.setLevel("WARN")`, or  `we.setLevel("ERROR")`.  The default is "ERROR".  
