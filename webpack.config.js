@@ -9,7 +9,7 @@ module.exports = [{
         globalObject : "this",
         path : path.resolve(__dirname, './'),
         publicPath : '/',
-        filename : '[name].js',
+        filename : '[name].bundle.js',
         library : "WeAssert",
         libraryTarget : "umd",
         umdNamedDefine : true
@@ -21,7 +21,7 @@ module.exports = [{
         ]
     },
     optimization : {
-        minimize : true
+        minimize : false
     },
     plugins : [
         new webpack.DefinePlugin({

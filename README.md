@@ -21,10 +21,10 @@ The most basic usage is the `that(statement, message)` function.  For example
 ```
 we.assert.that(x < y, "x < y");
 ```
-If the statement evaluates false, the weAssert handler will be called.  The handler should be a function of the form `handler(statement, message`).  To define such a function, we use `we.setHandler` as in this example.
+If the statement evaluates false, the weAssert handler will be called.  The handler should be a function of the form `handler(message`).  To define such a function, we use `we.setHandler` as in this example.
 ```
-we.setHandler(function(statement, message){
-    throw new Error(message);
+we.setHandler(function(message){
+    throw new Error(`The following assertion failed: ${message}`);
 });
 ```
 
