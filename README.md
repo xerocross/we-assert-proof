@@ -57,7 +57,7 @@ then levels play no role in the assertion.  It will be treated as an error and i
 
 You can define arbitrary data types so long as you can pass in a function that evaluates boolean to check whether any input passes or fails.
 
-The usage pattern is ``we.assert.typeOf(data).is(_tyepstring_, _message_) to validate a given element _data_.
+The usage pattern is ``we.assert.typeOf(data).is(_tyepstring_, _message_)`` to validate a given element _data_.
 
 ```
     we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
