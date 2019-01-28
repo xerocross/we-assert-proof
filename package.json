@@ -4,8 +4,11 @@
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "we-assert.js",
   "scripts": {
-    "test": "jest",
-    "build": "webpack"
+    "test": "yarn ts && yarn ts-tests &&  yarn jest -t ./src/we-assert.test.js",
+    "ts": "yarn tsc -d ./src/we-assert.ts",
+    "ts-tests": "yarn tsc -d ./src/we-assert.test.ts",
+    "build": "yarn ts && yarn webpack",
+    "test-after" : "node copyTest.js && yarn tsc ./we-assert.test.ts && yarn jest /we-assert.test.js"
   },
   "keywords": [
     "verification",
@@ -18,6 +21,8 @@
     "url": "https://github.com/xerocross/we-assert.git"
   },
   "dependencies": {
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.18",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
@@ -38,6 +43,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^4.7.1",
     "jest": "^23.4.2",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.4",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
