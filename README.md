@@ -66,3 +66,34 @@ The usage pattern is ``we.assert.typeOf(data).is(_tyepstring_, _message_)`` to v
 The ```we``` instance does not come with any predefined types.  If you want to use the standard types you could import them into your ``we`` instance by, for example, executing this:
 
 ```we.define.type("number", (x)=> typeof x === "number");```
+```we.define.type("array", (x)=> Array.isArray(x));```
+
+You can also _check_ a data element and get a boolean directly like this.  This has no side effects.  If false, the handler will not be called.
+```
+let x = 12;
+we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+expect(we.check.typeOf(x).is("natural")).toBe(true);
+```
+
+Putting these things together, we can define something like this:
+
+```
+we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+we.define.type("natural[]", function (x) {
+    if (!Array.isArray(x)) {
+        return false;
+    } else {
+        for (let i = 0; i < x.length; i++) {
+            if (!we.check.typeOf(x[i]).is("natural")) {
+                return false;
+            }
+        }
+        return true;
+    }
+});
+expect(we.check.typeOf([2, 4, 7.5, 10]).is("natural[]")).toBe(false);
+```
+
+## to do
+
+We should probably have different, independent handlers for the different error levels, for DEBUG, WARN, AND ERROR.  I might do that later.

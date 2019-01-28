@@ -71,6 +71,19 @@ export default {
             defineProposition : function (symbol:string, prop:prop) {
                 propositions[symbol] = prop;
             },
+            check : {
+                typeOf : function (data:any) {
+                    return {
+                        is : function (dataTypeString:string) {
+                            if (types[dataTypeString]) {
+                                return types[dataTypeString](data);
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            },
             assert : {
                 that : function (statement:boolean, message:string) {
                     if (!statement) {

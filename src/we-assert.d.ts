@@ -13,6 +13,11 @@ declare const _default: {
         setHandler: (newHandler: handlerFunction) => void;
         getProposition: (symbol: string) => [evalFunction, any[], string];
         defineProposition: (symbol: string, prop: [evalFunction, any[], string]) => void;
+        check: {
+            typeOf: (data: any) => {
+                is: (dataTypeString: string) => any;
+            };
+        };
         assert: {
             that: (statement: boolean, message: string) => boolean;
             proposition: (symbol: string, prop: [evalFunction, any[], string]) => any;

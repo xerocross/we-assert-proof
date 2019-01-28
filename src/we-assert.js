@@ -64,6 +64,20 @@ exports["default"] = {
             defineProposition: function (symbol, prop) {
                 propositions[symbol] = prop;
             },
+            check: {
+                typeOf: function (data) {
+                    return {
+                        is: function (dataTypeString) {
+                            if (types[dataTypeString]) {
+                                return types[dataTypeString](data);
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    };
+                }
+            },
             assert: {
                 that: function (statement, message) {
                     if (!statement) {

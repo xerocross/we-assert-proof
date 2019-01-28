@@ -144,3 +144,47 @@ test("data is a natural number negative", function () {
     we.assert.typeOf(x).is("natural", "x is a natural");
     expect(resultVal).toBe(false);
 })
+test("check is natural number negative", function () {
+    let x = -12;
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    expect(we.check.typeOf(x).is("natural")).toBe(false);
+});
+test("check is natural number positive", function () {
+    let x = 12;
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    expect(we.check.typeOf(x).is("natural")).toBe(true);
+})
+
+test("test nested type pos", function () {
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    we.define.type("natural[]", function (x) {
+        if (!Array.isArray(x)) {
+            return false;
+        } else {
+            for (let i = 0; i < x.length; i++) {
+                if (!we.check.typeOf(x[i]).is("natural")) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    });
+    expect(we.check.typeOf([2, 4, 7, 10]).is("natural[]")).toBe(true);
+});
+
+test("test nested type neg", function () {
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    we.define.type("natural[]", function (x) {
+        if (!Array.isArray(x)) {
+            return false;
+        } else {
+            for (let i = 0; i < x.length; i++) {
+                if (!we.check.typeOf(x[i]).is("natural")) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    });
+    expect(we.check.typeOf([2, 4, 7.5, 10]).is("natural[]")).toBe(false);
+});
