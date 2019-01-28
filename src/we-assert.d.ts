@@ -20,6 +20,9 @@ declare const _default: {
             forXBetween: (min: number, max: number) => {
                 that: (evalFunction: evalFunction, message: string) => void;
             };
+            typeOf(data: any): {
+                is(dataType: string, message: string): void;
+            };
             atLevel: (someLevelString: string) => {
                 that: (statement: boolean, message: string) => void;
             };

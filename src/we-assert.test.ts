@@ -1,7 +1,7 @@
 
 //@ts-ignore
 import WeAssertPackage from "./we-assert.js";
-
+import FU from "xerocross.fu";
 let resultVal:any;
 let messages:string[] = [];
 let we = WeAssertPackage.build();
@@ -120,4 +120,27 @@ test("test vulcan combination of statements negative", function () {
     expect(messages[0]).toBe("x % 4 == 0");
 })
 
-
+test("test data type def positive", function () {
+    let x = 18;
+    we.define.type("int", (x)=>FU.number.isInteger(x));
+    we.assert.typeOf(x).is("int", "x is an int");
+    expect(resultVal).toBe(undefined);
+})
+test("test data type def negative", function () {
+    let x = 18.5;
+    we.define.type("int", (x)=>FU.number.isInteger(x));
+    we.assert.typeOf(x).is("int", "x is an int");
+    expect(resultVal).toBe(false);
+})
+test("data is a natural number positive", function () {
+    let x = 12;
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    we.assert.typeOf(x).is("natural", "x is a natural");
+    expect(resultVal).toBe(undefined);
+})
+test("data is a natural number negative", function () {
+    let x = -12;
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    we.assert.typeOf(x).is("natural", "x is a natural");
+    expect(resultVal).toBe(false);
+})

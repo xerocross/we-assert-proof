@@ -2,6 +2,7 @@
 exports.__esModule = true;
 //@ts-ignore
 var we_assert_js_1 = require("./we-assert.js");
+var xerocross_fu_1 = require("xerocross.fu");
 var resultVal;
 var messages = [];
 var we = we_assert_js_1["default"].build();
@@ -101,4 +102,28 @@ test("test vulcan combination of statements negative", function () {
     we.assert.proposition("B", [function (x) { return x % 2 == 0; }, [x], "x % 2 == 0"]);
     we.assert.thatIsProved("A & B", "A & B");
     expect(messages[0]).toBe("x % 4 == 0");
+});
+test("test data type def positive", function () {
+    var x = 18;
+    we.define.type("int", function (x) { return xerocross_fu_1["default"].number.isInteger(x); });
+    we.assert.typeOf(x).is("int", "x is an int");
+    expect(resultVal).toBe(undefined);
+});
+test("test data type def negative", function () {
+    var x = 18.5;
+    we.define.type("int", function (x) { return xerocross_fu_1["default"].number.isInteger(x); });
+    we.assert.typeOf(x).is("int", "x is an int");
+    expect(resultVal).toBe(false);
+});
+test("data is a natural number positive", function () {
+    var x = 12;
+    we.define.type("natural", function (x) { return xerocross_fu_1["default"].number.isNaturalNumber(x); });
+    we.assert.typeOf(x).is("natural", "x is a natural");
+    expect(resultVal).toBe(undefined);
+});
+test("data is a natural number negative", function () {
+    var x = -12;
+    we.define.type("natural", function (x) { return xerocross_fu_1["default"].number.isNaturalNumber(x); });
+    we.assert.typeOf(x).is("natural", "x is a natural");
+    expect(resultVal).toBe(false);
 });

@@ -40,3 +40,14 @@ When using this construction, the *statement* will only be evaluated if the leve
 we.assert.atLevel("WARN").that(false, "test")
 ```
 the handler will not be called and nothing will happen because `WARN` is not greater than or equal to the current level `ERROR`.
+
+### data validators
+
+You can define arbitrary data types so long as you can pass int a function that evaluates boolean to check whether any input passes or fails.
+
+Then use the pattern ``we.assert.typeOf(data).is(_tyepstring_, _message_) to validate a given element _data_.
+
+```
+    we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));
+    we.assert.typeOf(x).is("natural", "x is a natural");
+```

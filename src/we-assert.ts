@@ -108,6 +108,18 @@ export default {
                     }
                     return obj;
                 },
+                typeOf (data:any) {
+                    let self = this;
+                    return {
+                        is (dataType:string, message:string) {
+                            if (types[dataType]) {
+                                self.that(types[dataType](data), message);
+                            } else {
+                                throw new Error("undefined type");
+                            }
+                        }
+                    }
+                },
                 atLevel : function (someLevelString:string) {
                     var upperThat = this.that;
                     let obj = {

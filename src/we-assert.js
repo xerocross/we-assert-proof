@@ -100,6 +100,19 @@ exports["default"] = {
                     };
                     return obj;
                 },
+                typeOf: function (data) {
+                    var self = this;
+                    return {
+                        is: function (dataType, message) {
+                            if (types[dataType]) {
+                                self.that(types[dataType](data), message);
+                            }
+                            else {
+                                throw new Error("undefined type");
+                            }
+                        }
+                    };
+                },
                 atLevel: function (someLevelString) {
                     var upperThat = this.that;
                     var obj = {

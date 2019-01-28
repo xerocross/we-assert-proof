@@ -4,7 +4,7 @@
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "we-assert.js",
   "scripts": {
-    "test": "yarn ts && yarn ts-tests &&  yarn jest -t ./src/we-assert.test.js",
+    "test": "yarn ts && yarn ts-tests &&  yarn jest ./src/we-assert.test.js",
     "ts": "yarn tsc -d ./src/we-assert.ts",
     "ts-tests": "yarn tsc -d ./src/we-assert.test.ts",
     "build": "yarn ts && yarn webpack && yarn close",
@@ -49,6 +49,7 @@
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
+    "xerocross.fu": "^1.0.4",
     "xerocross.vulcan": "^0.3.1"
   }
 }
