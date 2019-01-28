@@ -1,6 +1,6 @@
 {
   "name": "we-assert",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "we-assert.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "ts-tests": "yarn tsc -d ./src/we-assert.test.ts",
     "build": "yarn ts && yarn webpack && yarn close",
     "close": "java -jar closure-compiler-v20190121.jar --js ./we-assert.bundle.js --js_output_file ./we-assert.js",
-    "test-after" : "node copyTest.js && yarn tsc ./we-assert.test.ts && yarn jest /we-assert.test.js"
+    "test-after": "node copyTest.js && yarn tsc ./we-assert.test.ts && yarn jest /we-assert.test.js"
   },
   "keywords": [
     "verification",
