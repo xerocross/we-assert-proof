@@ -1,15 +1,12 @@
 {
-    "parser" : "babel-eslint",
-    "plugins": ["jest"],
-    "env": {
-        "browser" : true,
-        "commonjs": true,
-        "node": true,
-        "jest/globals": true
-    },
+    "parser" : "@typescript-eslint/parser",
+    "plugins": ["jest", "@typescript-eslint"],
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jest/recommended"
     ],
+    "ignorePatterns": ["dist/"],
     "rules": {
         "space-before-function-paren": ["error", "always"],
         "comma-spacing": ["error", { "before": false, "after": true }],
@@ -24,12 +21,24 @@
             "beforeColon": true,
             "afterColon": true,
             "mode": "strict"
-        }]
+        }],
+        "semi": ["error", "always"],
+        "@typescript-eslint/no-var-requires" : "off",
+        "@typescript-eslint/no-explicit-any" : "off",
+        "@typescript-eslint/no-empty-function" : "off"
     },
     "globals" : {
-        "NODE_ENV" : false,
-        "expect" : false,
-        "test" : false,
-        "console" : false
-    }
+        "NODE_ENV" : "readonly",
+        "expect" : "readonly",
+        "test" : "readonly",
+        "console" : "readonly"
+    },
+    "overrides": [
+        {
+          "files": ["*.js"],
+          "env": {
+            "node": true
+          }
+        }
+      ]
 }

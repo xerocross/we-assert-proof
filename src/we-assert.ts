@@ -1,19 +1,16 @@
-//import vulcan from "vulcan";
-//import vulcan from "xerocross.vulcan";
-//const vulcan = require("xerocross.vulcan");
 import * as vulcan from "xerocross.vulcan";
 type GenericObject = { [key: string]: any };
 type StringObject = { [key: string]: string };
 type handlerFunction = (message:string) => void;
 type evalFunction = (...args:any) => boolean;
-var handler:handlerFunction = function () :void {};
+let handler:handlerFunction = function () :void {};
 
-var levels: StringObject = {
+const levels: StringObject = {
     0 : "DEBUG",
     1 : "WARN",
     2 : "ERROR"
 };
-var levelStringToInt = function (levelString:string) :number {
+const levelStringToInt = function (levelString:string) :number {
     switch (levelString) {
     case "DEBUG":
         return 0;
@@ -33,12 +30,12 @@ export default {
         
         let currentLevel = 2;
         type prop = [evalFunction, any[], string];
-        let propositions :{ [key: string]: prop } = {};
-        let types:GenericObject = {};
+        const propositions :{ [key: string]: prop } = {};
+        const types:GenericObject = {};
         type verifyFunction = (x:any) => boolean
-        let factBase: string[] = [];
+        const factBase: string[] = [];
 
-        let we = {
+        const we = {
             define : {
                 type : function (typeName:string, vEval :verifyFunction ) :void {
                     types[typeName] = vEval;
@@ -48,7 +45,7 @@ export default {
                 factBase.push(logicSentence);
             },
             setLevel : function (levelString:string) {
-                var newLevel = levelStringToInt(levelString);
+                const newLevel = levelStringToInt(levelString);
                 if (newLevel == 0 || newLevel == 1 || newLevel == 2) {
                     currentLevel = newLevel;
                 } else {
@@ -58,8 +55,8 @@ export default {
             getLevel : function () :string {
                 return levels[currentLevel];
             },
-            checkIsProved : function (symbol:string) :Boolean {
-                var proof = vulcan.prove(factBase, symbol);
+            checkIsProved : function (symbol:string) :boolean {
+                const proof = vulcan.prove(factBase, symbol);
                 return vulcan.isProofComplete(proof);
             },
             setHandler : function (newHandler:handlerFunction) {
@@ -81,7 +78,7 @@ export default {
                                 return false;
                             }
                         }
-                    }
+                    };
                 }
             },
             assert : {
@@ -92,11 +89,11 @@ export default {
                     return ((statement) == true);
                 },
                 proposition : function (symbol:string, prop:prop) {
-                    we.defineProposition(symbol, prop)
-                    let propFunction = prop[0];
-                    let propArgs = prop[1];
-                    let propMessage = prop[2];
-                    let val = propFunction(...propArgs);
+                    we.defineProposition(symbol, prop);
+                    const propFunction = prop[0];
+                    const propArgs = prop[1];
+                    const propMessage = prop[2];
+                    const val = propFunction(...propArgs);
     
                     if (val) {
                         factBase.push(symbol);
@@ -104,50 +101,49 @@ export default {
                     return this.that(val, propMessage);
                 },
                 thatIsProved : function (symbol:string, message:string) {
-                    let res = we.checkIsProved(symbol);
+                    const res = we.checkIsProved(symbol);
                     if (!res) {
                         handler(message);
                     } 
                     return res;
                 },
                 forXBetween : function (min:number, max:number) {
-                    var that = this.that;
-                    let obj = {
+                    const that = this.that;
+                    const obj = {
                         that : function (evalFunction:evalFunction, message:string) :void {
                             for (let x = min; x < max; x++) {
                                 that(evalFunction(x), message);
                             }
                         }
-                    }
+                    };
                     return obj;
                 },
                 typeOf (data:any) {
-                    let self = this;
                     return {
-                        is (dataType:string, message:string) {
+                        is : (dataType:string, message:string) => {
                             if (types[dataType]) {
-                                self.that(types[dataType](data), message);
+                                this.that(types[dataType](data), message);
                             } else {
                                 throw new Error("undefined type");
                             }
                         }
-                    }
+                    };
                 },
                 atLevel : function (someLevelString:string) {
-                    var upperThat = this.that;
-                    let obj = {
+                    const upperThat = this.that;
+                    const obj = {
                         that : function (statement:boolean, message:string) {
                             
-                            let level = levelStringToInt(someLevelString);
+                            const level = levelStringToInt(someLevelString);
                             if (level >= currentLevel) {
                                 upperThat(statement, message);
                             }
                         }
-                    }
+                    };
                     return obj;
                 }
             }
         };
         return we;
     }
-}
+};
