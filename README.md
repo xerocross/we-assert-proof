@@ -1,8 +1,10 @@
-# We Assert
+# We Assert (2018)
 
 A very small package for use in internally verifying statements inside scripts and functions at runtime---not just black-box checking of outputs.
 
 This package is environment agnostic.
+
+This project is from 2018-2019 and it **has not been maintained**. I'm writing now in June 2023, and I like the idea of this project, but I have found that I cannot add it as a dependency on modern projects because of peer dependency mismatch. I have not decided whether I will update this package.
 
 ## development and deployment
 
