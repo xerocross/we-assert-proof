@@ -2,14 +2,10 @@
   "name": "we-assert",
   "version": "2.2.1",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
-  "main": "we-assert.js",
+  "main": "dist/we-assert.js",
   "scripts": {
-    "test": "yarn ts && yarn ts-tests &&  yarn jest ./src/we-assert.test.js",
-    "ts": "yarn tsc -d ./src/we-assert.ts",
-    "ts-tests": "yarn tsc -d ./src/we-assert.test.ts",
-    "build": "yarn ts && yarn webpack && yarn close",
-    "close": "java -jar closure-compiler-v20190121.jar --js ./we-assert.bundle.js --js_output_file ./we-assert.js",
-    "test-after": "node copyTest.js && yarn tsc ./we-assert.test.ts && yarn jest /we-assert.test.js"
+    "test": "jest",
+    "build": "webpack --mode production"
   },
   "keywords": [
     "verification",
@@ -21,35 +17,24 @@
     "type": "git",
     "url": "https://github.com/xerocross/we-assert.git"
   },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "babel-loader": "^9.1.2",
+    "eslint": "^8.42.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
+  },
   "dependencies": {
-    "@types/jest": "^23.3.13",
-    "@types/node": "^10.12.18",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "cross-env": "^5.2.0",
-    "css-loader": "^1.0.0",
-    "eslint": "^5.9.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-html": "^5.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^22.1.3",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^4.7.1",
-    "jest": "^23.4.2",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.4",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8",
-    "xerocross.fu": "^1.0.4",
-    "xerocross.vulcan": "^0.3.1"
+    "xerocross.vulcan": "^0.4.0"
   }
 }

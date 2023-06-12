@@ -1,6 +1,3 @@
-//import vulcan from "vulcan";
-//import vulcan from "xerocross.vulcan";
-//const vulcan = require("xerocross.vulcan");
 import * as vulcan from "xerocross.vulcan";
 type GenericObject = { [key: string]: any };
 type StringObject = { [key: string]: string };

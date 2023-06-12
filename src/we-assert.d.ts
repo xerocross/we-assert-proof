@@ -1,5 +1,5 @@
-declare type handlerFunction = (message: string) => void;
-declare type evalFunction = (...args: any) => boolean;
+type handlerFunction = (message: string) => void;
+type evalFunction = (...args: any) => boolean;
 declare const _default: {
     checkVulcan(): any;
     build: () => {
