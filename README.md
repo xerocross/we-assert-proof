@@ -3,9 +3,18 @@
 We-Assert is an assert utility for use in internally verifying statements inside scripts at runtime. One potential goal is to catch what would otherwise be silent errors, or perhaps even
 to mathematically prove that an algorithm has functioned as expected.
 
-We-Assert depends on Vulcan Version 0.4.0 (https://github.com/RyanMarcus/vulcan), which is old but appears to be stable. Aside from that dependency, it is a one-man project written and maintained by Adam Cross. If I say "we", really I'm just referring to myself.
+We-Assert depends on Vulcan, Version 0.4.0, (https://github.com/RyanMarcus/vulcan), which is old but appears to be stable. Aside from that dependency, it is a one-man project written and maintained by Adam Cross. If I say "we", really I'm just referring to myself.
 
 This project was stale for a long while, but as of June 2023 I have updated it to Version 3, and it is up-to-code. I plan to use it in some of my other projects, so it is likely that I will maintain it better now.
+
+## importing
+
+We-Assert is published to NPM as `we-assert`. Standard importing would look like this.
+```
+import WeAssert from "we-assert"
+```
+
+The source code is at https://github.com/xerocross/we-assert.
 
 ## development and deployment
 
@@ -30,7 +39,7 @@ The most basic usage is the `that(statement, message)` function.  For example
 ```
 we.assert.that(x < y, "x < y");
 ```
-We recommend writing messages that are positive assertions representing the calculation---not an error message to be thrown upon failure.
+We recommend writing messages that are positive assertions representing the calculation&mdash;not an error message to be thrown upon failure.
 
 If the statement evaluates false, the weAssert handler will be called.  The handler should be a function of the form `handler : (message) => {...}`.  To define such a function, we use `we.setHandler` as in this example.
 ```
@@ -69,7 +78,7 @@ The usage pattern is ``we.assert.typeOf(data).is(_tyepstring_, _message_)`` to v
     we.define.type("natural", (x) => isNaturalNumber(x));
     we.assert.typeOf(x).is("natural", "x is a natural");
 ```
-The ```we``` instance does not come with any predefined types.  If you want to use the standard types you could import them into your ``we`` instance by, for example, executing this:
+The ```we``` instance does not come with any predefined types.  If you want to use the standard types you can define them in your ``we`` instance by, for example, executing this:
 
 ```we.define.type("number", (x) => typeof x === "number");```
 ```we.define.type("array", (x)=> Array.isArray(x));```
@@ -102,10 +111,14 @@ expect(we.check.typeOf([2, 4, 7.5, 10]).is("natural[]")).toBe(false);
 
 ## to do
 
-### mathematical proof
-We should probably have different, independent handlers for the different error levels, for DEBUG, WARN, AND ERROR.  I might do that later.
+### handlers for different levels
 
-I'm playing with some ideas related to logical proof.  I would really like to wire automated proofs into this thing, but I have not cracked it yet.
+We should probably have different, independent handlers for the different error levels, for DEBUG, WARN, AND ERROR. I might do that later.
+
+### mathematical proof
+
+
+I'm playing with some ideas related to logical proof. I would really like to wire automated proofs into this thing, but I have not cracked it yet.
 
 ### documentation
 
