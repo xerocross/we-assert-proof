@@ -1,6 +1,6 @@
 {
   "name": "we-assert-proof",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "dist/we-assert-proof.js",
   "scripts": {
