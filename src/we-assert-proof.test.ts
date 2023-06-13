@@ -1,4 +1,4 @@
-import WeAssertPackage from "./we-assert";
+import WeAssertPackage from "./we-assert-proof";
 let resultVal:any;
 let messages:string[] = [];
 const we = WeAssertPackage.build();

@@ -1,8 +1,8 @@
 {
-  "name": "we-assert",
-  "version": "3.0.1",
+  "name": "we-assert-proof",
+  "version": "1.0.1",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
-  "main": "dist/we-assert.js",
+  "main": "dist/we-assert-proof.js",
   "scripts": {
     "test": "jest",
     "pack" : "webpack --mode production",
@@ -18,7 +18,7 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xerocross/we-assert.git"
+    "url": "https://github.com/xerocross/we-assert-proof.git"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",

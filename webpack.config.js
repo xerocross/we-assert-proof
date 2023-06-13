@@ -5,14 +5,14 @@ const fs = require('fs');
 
 module.exports = [{
     entry : {
-        'we-assert' : './src/we-assert.ts'
+        'we-assert-proof' : './src/we-assert-proof.ts'
     },
     output : {
         globalObject : "this",
         path : path.resolve(__dirname, './dist'),
         publicPath : '/',
         filename : '[name].js',
-        library : "WeAssert",
+        library : "WeAssertProof",
         libraryTarget : "umd",
         umdNamedDefine : true
     },

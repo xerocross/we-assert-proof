@@ -1,37 +1,41 @@
-# We-Assert
+# We-Assert-Proof
 
-We-Assert is an assert utility for use in internally verifying statements inside scripts at runtime. One potential goal is to catch what would otherwise be silent errors, or perhaps even
-to mathematically prove that an algorithm has functioned as expected.
+We-Assert-Proof is an assert utility for use in internally verifying statements inside scripts at runtime. One potential goal is to catch what would otherwise be silent errors, or perhaps even
+to mathematically prove that an algorithm has functioned as expected. **See also We-Assert (https://github.com/xerocross/we-assert)**.
 
-We-Assert depends on Vulcan, Version 0.4.0, (https://github.com/RyanMarcus/vulcan), which is old but appears to be stable. Aside from that dependency, it is a one-man project written and maintained by Adam Cross. If I say "we", really I'm just referring to myself.
+We-Assert-Proof depends on Vulcan, Version 0.4.0, (https://github.com/RyanMarcus/vulcan), which is old but appears to be stable. Aside from that dependency, it is a one-man project written and maintained by Adam Cross. If I say "we", really I'm just referring to myself.
 
-This project was stale for a long while, but as of June 2023 I have updated it to Version 3, and it is up-to-code. I plan to use it in some of my other projects, so it is likely that I will maintain it better now.
+This project was stale for a long while, but as of June 2023 I have updated it to Version 3, and it is up-to-code.
+
+## We-Assert (different project)
+
+We-Assert-Proof is basically a fork of We-Assert V3 (https://github.com/xerocross/we-assert). I found the license of Vulcan burdensome and the assertion functionality of We-Assert does not need Vulcan, so I removed the dependency from We-Assert as of V4 and made We-Assert-Proof a separate project. See We-Assert for the assertion functionality of We-Assert-Proof without Vulcan and without the burdensome license.
 
 ## importing
 
-We-Assert is published to NPM as `we-assert`. Standard importing would look like this.
+We-Assert-Proof is published to NPM as `we-assert-proof`. Standard importing would look like this.
 ```
-import WeAssert from "we-assert"
+import WeAssertProof from "we-assert-proof"
 ```
 
-The source code is at https://github.com/xerocross/we-assert.
+The source code is at https://github.com/xerocross/we-assert-proof.
 
 ## development and deployment
 
-As of Version 3, we are now using npm to build this project (not yarn, which we used in V2), so to install execute `npm install`.
+To install execute `npm install`.
 
-We-Assert is written in TypeScript.  The package includes a test suite and a script for running it. Use `npm test` to run the test suite, which is written using Jest.
+We-Assert-Proof is written in TypeScript.  The package includes a test suite and a script for running it. Use `npm test` to run the test suite, which is written using Jest.
 
 ## copyleft license
 
-Note the restrictive copyleft license. That was not my decision. I prefer to use the MIT license, but because Vulcan uses the highly restrictive GNU AFFERO GENERAL PUBLIC LICENSE, and because Vulcan is bundled with We-Assert, I was required to use a compatible license, so I used the same one.
+Note the restrictive copyleft license. That was not my decision. I prefer to use the MIT license, but because Vulcan uses the highly restrictive GNU AFFERO GENERAL PUBLIC LICENSE, and because Vulcan is bundled with We-Assert-Proof, I was required to use a compatible license, so I used the same one. For software with just the assertion functionality of We-Assert-Proof, see my other project we-assert (v4+) instead: We-Assert https://github.com/xerocross/we-assert.
 
 ## usage
 
 
 ```
-import WeAssert from "we-assert";
-var we = WeAssert.build();
+import WeAssert from "we-assert-proof";
+var we = WeAssertProof.build();
 ```
 Here ``we`` is not a singleton.  You can build as many as you want, and each has its own scope and each can be configured independently.
 
@@ -47,7 +51,7 @@ we.setHandler((message) => {
     throw new Error(`The following assertion failed: ${message}`);
 });
 ```
-Note how in the handler we have translated the positive assertion into an error message about exactly which assertion failed.  Of course instead of throwing an error you could just swallow it, or log it, or throw the error and log it.  You get the idea.  We-Assert is agnostic to handling the failure of assertions.  Handle it however you want.   
+Note how in the handler we have translated the positive assertion into an error message about exactly which assertion failed.  Of course instead of throwing an error you could just swallow it, or log it, or throw the error and log it.  You get the idea.  We-AssertProof is agnostic to handling the failure of assertions.  Handle it however you want.   
 
 We can set the level using any of the following:
 `we.setLevel("DEBUG")`, `we.setLevel("WARN")`, or  `we.setLevel("ERROR")`.  The default is "ERROR".  
@@ -122,4 +126,4 @@ I'm playing with some ideas related to logical proof. I would really like to wir
 
 ### documentation
 
-There is more functionality in We-Assert that I have not documented here yet. I need to add more documentation to this readme document.
+There is more functionality in We-Assert-Proof that I have not documented here yet. I need to add more documentation to this readme document.
