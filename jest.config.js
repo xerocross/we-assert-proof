@@ -63,7 +63,7 @@ module.exports = {
     // ],
 
     // An array of file extensions your modules use
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    moduleFileExtensions : ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
     // moduleNameMapper: {},
@@ -78,7 +78,7 @@ module.exports = {
     // notifyMode: "always",
 
     // A preset that is used as a base for Jest's configuration
-    preset: 'ts-jest',
+    preset : 'ts-jest',
 
     // Run tests from one or more projects
     // projects: null,
@@ -119,7 +119,7 @@ module.exports = {
     // snapshotSerializers: [],
 
     // The test environment that will be used for testing
-    testEnvironment: "node",
+    testEnvironment : "node",
 
     // Options that will be passed to the testEnvironment
     // testEnvironmentOptions: {},
@@ -139,7 +139,7 @@ module.exports = {
     // ],
 
     // The regexp pattern Jest uses to detect test files
-    testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
+    testRegex : "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$"
 
     // This option allows the use of a custom results processor
     // testResultsProcessor: null,
@@ -147,8 +147,6 @@ module.exports = {
     // This option allows use of a custom test runner
     // testRunner: "jasmine2",
 
-    // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-    testURL : "http://localhost/",
 
     // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
     // timers: "real",

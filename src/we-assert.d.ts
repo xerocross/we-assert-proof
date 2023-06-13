@@ -9,7 +9,7 @@ declare const _default: {
         assume: (logicSentence: string) => void;
         setLevel: (levelString: string) => void;
         getLevel: () => string;
-        checkIsProved: (symbol: string) => Boolean;
+        checkIsProved: (symbol: string) => boolean;
         setHandler: (newHandler: handlerFunction) => void;
         getProposition: (symbol: string) => [evalFunction, any[], string];
         defineProposition: (symbol: string, prop: [evalFunction, any[], string]) => void;
@@ -21,7 +21,7 @@ declare const _default: {
         assert: {
             that: (statement: boolean, message: string) => boolean;
             proposition: (symbol: string, prop: [evalFunction, any[], string]) => any;
-            thatIsProved: (symbol: string, message: string) => Boolean;
+            thatIsProved: (symbol: string, message: string) => boolean;
             forXBetween: (min: number, max: number) => {
                 that: (evalFunction: evalFunction, message: string) => void;
             };

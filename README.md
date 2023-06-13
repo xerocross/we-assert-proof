@@ -1,6 +1,7 @@
 # We Assert (2018)
 
-A very small package for use in internally verifying statements inside scripts and functions at runtime---not just black-box checking of outputs.
+A utility for use in internally verifying statements inside scripts at runtime. One potential goal is to catch what would otherwise be silent errors, or perhaps even
+to mathematically prove that an algorithm has functioned as expected.
 
 This package is environment agnostic.
 
@@ -8,19 +9,20 @@ This project is from 2018-2019 and it **has not been maintained**. I'm writing n
 
 ## development and deployment
 
-We-Assert is written in TypeScript.  The package includes test suites and scripts for running them.  `yarn test` will compile the TypeScript and run the tests using Jest.
+As of Version 3, we are now using npm to build this project, so to install simply
+execute `npm install`.
 
-The bundle is packaged using webpack and then the final output is compiled using Google's closure-compile.  Closure-compile is a Java program.  If you want to clone this package locally for development, you will need to get your own copy of closure-compile (you may need to change the filename in the ``package.json`` file referring to the jar file), and it will only run if you have Java installed on your system.  Alternatively, you can remove this compile step and using something else like uglify.
+We-Assert is written in TypeScript.  The package includes test suites and scripts for running them. Use `npm test` to run the test suite, which is written using 
+Jest.
 
 ## usage
 
-The only export from this package is a function called `build` which takes no arguments.  So, for example, to get started you might do something like
 
 ```
 import WeAssert from "we-assert";
 var we = WeAssert.build();
 ```
-Here ``we`` is not a singleton.  You can build as many as you want, and they all have independent interior namespacing.
+Here ``we`` is not a singleton.  You can build as many as you want, and they all have independent namespacing.
 
 The most basic usage is the `that(statement, message)` function.  For example
 ```
@@ -28,9 +30,9 @@ we.assert.that(x < y, "x < y");
 ```
 We recommend writing messages that are positive assertions representing the calculation---not an error message to be thrown upon failure.
 
-If the statement evaluates false, the weAssert handler will be called.  The handler should be a function of the form `handler(message`).  To define such a function, we use `we.setHandler` as in this example.
+If the statement evaluates false, the weAssert handler will be called.  The handler should be a function of the form `handler : (message) => {...}`.  To define such a function, we use `we.setHandler` as in this example.
 ```
-we.setHandler(function(message){
+we.setHandler((message) => {
     throw new Error(`The following assertion failed: ${message}`);
 });
 ```
@@ -70,7 +72,7 @@ The ```we``` instance does not come with any predefined types.  If you want to u
 ```we.define.type("number", (x)=> typeof x === "number");```
 ```we.define.type("array", (x)=> Array.isArray(x));```
 
-You can also _check_ a data element and get a boolean directly like this.  This has no side effects.  If false, the handler will not be called.
+You can also _check_ a data element and get a boolean directly like this.  This has no side effects. If false, the handler will not be called.
 ```
 let x = 12;
 we.define.type("natural", (x)=>FU.number.isNaturalNumber(x));

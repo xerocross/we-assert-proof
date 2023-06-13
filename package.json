@@ -1,18 +1,21 @@
 {
   "name": "we-assert",
-  "version": "2.2.1",
+  "version": "3.0.1",
   "description": "A very small package for use in internally verifying the flow and logic of scripts.",
   "main": "dist/we-assert.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack --mode production"
+    "pack" : "webpack --mode production",
+    "build": "npm run pack && npm run add-license",
+    "lint" : "npx eslint --fix src/",
+    "add-license" : "node scripts/add-license.js"
   },
   "keywords": [
     "verification",
     "assert"
   ],
   "author": "Adam Cross",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/xerocross/we-assert.git"
