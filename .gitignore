@@ -1,4 +1,4 @@
 .npmignore
-yarn.lock
+dist
 node_modules
 closure-compiler-v20190121.jar
