@@ -5,7 +5,7 @@ to mathematically prove that an algorithm has functioned as expected. **See also
 
 We-Assert-Proof depends on Vulcan, Version 0.4.0, (https://github.com/RyanMarcus/vulcan), which is old but appears to be stable. Aside from that dependency, it is a one-man project written and maintained by Adam Cross. If I say "we", really I'm just referring to myself.
 
-This project was stale for a long while, but as of June 2023 I have updated it to Version 3, and it is up-to-code.
+This project was stale for a long while, but as of June 2023 I have updated its dependencies and made it presentable for possible future development. There are problems, and I haven't yet figured out how to actually use Vulcan here to implement mathematical proofs into code. That is something I want to do eventually.
 
 ## We-Assert (different project)
 
@@ -24,7 +24,7 @@ The source code is at https://github.com/xerocross/we-assert-proof.
 
 To install execute `npm install`.
 
-We-Assert-Proof is written in TypeScript.  The package includes a test suite and a script for running it. Use `npm test` to run the test suite, which is written using Jest.
+We-Assert-Proof is written in TypeScript. The package includes a test suite and a script for running it. Use `npm test` to run the test suite, which is written using Jest.
 
 ## copyleft license
 
@@ -34,7 +34,7 @@ Note the restrictive copyleft license. That was not my decision. I prefer to use
 
 
 ```
-import WeAssert from "we-assert-proof";
+import WeAssertProof from "we-assert-proof";
 var we = WeAssertProof.build();
 ```
 Here ``we`` is not a singleton.  You can build as many as you want, and each has its own scope and each can be configured independently.
